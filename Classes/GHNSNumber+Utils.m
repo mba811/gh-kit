@@ -159,4 +159,26 @@
 	return NSIntegerMax * r;
 }
 
+- (NSString *)gh_priceString;
+{
+    return [self gh_priceStringOfLocaleIdentifier:[[NSLocale currentLocale] localeIdentifier]];
+}
+
+- (NSString *)gh_priceStringOfLocaleIdentifier:(NSString *)identifier
+{
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:identifier];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    [formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [formatter setLocale:locale];
+    
+    NSString *string = [formatter stringFromNumber:self];
+    
+    [formatter release];
+    [locale release];
+    
+    return string;
+}
+
 @end

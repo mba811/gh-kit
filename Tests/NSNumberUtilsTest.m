@@ -51,4 +51,15 @@
   GHAssertEqualStrings([NSNumber gh_ordinalize:1], @"1st", nil);
 }
 
+-(void)testPriceString {
+    // USA
+    GHAssertEqualStrings([[NSNumber numberWithFloat:1.99] gh_priceString], @"$1.99", nil);
+}
+
+-(void)testPriceStringOfLocale {
+    GHAssertEqualStrings([[NSNumber numberWithFloat:1.99] gh_priceStringOfLocaleIdentifier:@"en_US"], @"$1.99", nil);
+    GHAssertEqualStrings([[NSNumber numberWithFloat:1.99] gh_priceStringOfLocaleIdentifier:@"ja_JP"], @"￥2", nil);
+}
+
+
 @end

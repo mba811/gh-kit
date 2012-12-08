@@ -109,4 +109,16 @@
  */
 + (NSInteger)gh_randomInteger;
 
+/*!
+ Return formatted price string of current locale
+ @result Formatted price string
+ */
+- (NSString *)gh_priceString;
+
+/*!
+ Return formatted price string of the locale
+ @result Formatted price string
+ */
+- (NSString *)gh_priceStringOfLocaleIdentifier:(NSString *)identifier;
+
 @end
